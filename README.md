@@ -1,8 +1,8 @@
 ### Introduction
 
-![preview](./preview.gif)
-
 Use EditText with header and footer icon.
+
+![preview](./preview.gif)
 
 ### How to use
 

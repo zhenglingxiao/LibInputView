@@ -1,12 +1,12 @@
 ### Introduction
 
-![preview](./preview.gif)
-
 Use EditText with header and footer icon.
+
+![preview](./preview.gif)
 
 ### How to use
 
-1. xml
+1. Add InputView in layout's xml.
 
 ``` xml
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +23,7 @@ Use EditText with header and footer icon.
         android:padding="8dp" />
 </FrameLayout>
 ```
-2. Add icon
+2. Add icons to InputView programmatically.
 
 ``` kotlin
 inputView.addHeaderIcon(R.drawable.ic_account, marginStart = 8, marginEnd = 8)
@@ -40,7 +40,7 @@ inputView.addPasswordIcon(R.drawable.ic_eye_selector, 8, 8) {
 }
 ```
 
-3. Drawable for InputView.addPasswordIcon()
+3. Drawable's xml for InputView.addPasswordIcon()
 
 ``` xml
 <selector xmlns:android="http://schemas.android.com/apk/res/android">

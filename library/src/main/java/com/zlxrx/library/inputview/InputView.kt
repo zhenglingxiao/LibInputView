@@ -76,6 +76,9 @@ class InputView : EditText {
     }
 
     private fun drawIcon(canvas: Canvas, icon: Icon) {
+        if (!icon.isVisible) {
+            return
+        }
         val drawable = icon.drawable ?: return
         if (drawable is StateListDrawable) {
             drawable.state = icon.state
@@ -152,12 +155,24 @@ class InputView : EditText {
         resId: Int,
         marginStart: Int = 0,
         marginEnd: Int = 0,
+        hideOnInputEmpty: Boolean = true,
         onCleared: (() -> Unit)? = null
     ) {
-        footerIcons.add(Icon(resId, marginStart, marginEnd) { _, _ ->
+        val clearIcon = Icon(resId, marginStart, marginEnd) { _, _ ->
             setText("")
             onCleared?.invoke()
-        })
+        }
+        footerIcons.add(clearIcon)
+
+        if (hideOnInputEmpty) {
+            if (text.isEmpty()) {
+                clearIcon.isVisible = false
+            }
+            doOnTextChanged { text, _, _, _ ->
+                clearIcon.isVisible = !text.isNullOrEmpty()
+                postInvalidate()
+            }
+        }
     }
 
     fun addPasswordIcon(
@@ -191,6 +206,8 @@ class InputView : EditText {
         val marginEnd: Int = 0,
         val onClick: ((Icon, String) -> Unit)? = null
     ) {
+
+        var isVisible = true
         val bounds = RectF()
         val drawable: Drawable? = context.getDrawable(resId)
 

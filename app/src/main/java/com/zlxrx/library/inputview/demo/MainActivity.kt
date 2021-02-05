@@ -13,11 +13,11 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
         inputView.addHeaderIcon(R.drawable.ic_account, marginStart = 8)
         inputView.addHeaderIcon(R.drawable.ic_info, marginEnd = 8)
-        inputView.addClearIcon(R.drawable.ic_clean_selector, marginEnd = 8) {
-            Toast.makeText(this, "clean", Toast.LENGTH_SHORT).show()
-        }
         inputView.addPasswordIcon(R.drawable.ic_eye_selector, 8, 8) {
             Toast.makeText(this, "password visible: $it", Toast.LENGTH_SHORT).show()
+        }
+        inputView.addClearIcon(R.drawable.ic_clean_selector, marginEnd = 8) {
+            Toast.makeText(this, "clean", Toast.LENGTH_SHORT).show()
         }
     }
 }
